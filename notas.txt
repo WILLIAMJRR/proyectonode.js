@@ -1,0 +1,84 @@
+iniciar proyecto en node
+npm init
+
+
+//protocolo(http), recurso(ruta)
+
+//require es solicitud y respose es respuesta
+
+//path cambia lo que se necesita y put cambia todo el objeto
+
+middleware  es una funcion que realiza algo en concreto y puede tener muchas funcionalidades es una funcion que esta en medio de 2 cosas
+
+las rutas son middleware
+
+los middleware reciben la req ,la res y next
+
+next es una funcion que utliza middleware para que continue con el siguiente middleware
+
+
+los middleware se van a usar con la palabra use se ejecuta entre la solicitud y respuesta
+
+//http://localhost:3001/actualizar/5/tv si en la ruta no hay 2 puntos no es una variable quiere decir que en hay que colocar el nombre de la ruta tal cual esta escrito (category)
+// app.patch('/actualizar/:id/category/:name', updateProduct);
+
+
+stack de middleware
+el stack va ser un array donde cada vez que haya un request vamos agregando los middlewares al final del mismo.
+
+ciclo de solicitud-respuesta
+middleware asincrono (funciones que retornan promesas)
+async await
+
+middleware 1 -> middleware2-> middleware3
+
+Morgan es un middleware de registro de solicitudes HTTP para Node.js. Se utiliza para registrar información sobre las solicitudes HTTP entrantes y salientes, como el método, la URL, el encabezado, el cuerpo de la solicitud y la respuesta. Morgan se puede utilizar para una variedad de propósitos, como la depuración, la supervisión y el análisis.
+
+Para instalar Morgan a través de npm, use el siguiente comando:
+$ npm install morgan --save
+
+para instalar sequealize es el comando npm i sequealize --save junto
+con el comando npm i pg pg-hstore para postgres
+
+para instalar los driver de mysql seria
+npm i mysql2
+sequelize cli
+npm i sequelize-cli -g
+
+en los controladores
+
+//para crear un controlador que son funciones que se ejecutan cuando se llama a una ruta
+//creando un nuevo archivo llamado usuarios.js dentro del directorio controllers/
+//creando un nuevo archivo llamado usuarios.js dentro del directorio controllers/
+
+
+//MVC
+//modelo vista controlador
+//modelo es la base de datos
+//vista es lo que se muestra al usuario
+//controlador es la logica de la aplicacion
+
+//para crear un controlador que son funciones que se ejecutan cuando se llama a una ruta
+
+el controlador le pide información al modelo que son las table y la base de datos
+y luego envía esta informacion al view
+
+una promesa se ocupa cuando hay que esperar
+una promesa es un objeto que representa la terminacion o el fracaso de una operacion asincrona
+es decir si no tengo nada en mi bolsa me voy a comprar algo por internet pero estoy seguro que
+me va a llegar el producto
+si ya tengo algo en mi bolsa me voy a recoger ese producto
+const express = require('express'); //importamos express
+const app = express(); //ejecutamos express
+const morgan = require('morgan'); //importamos morgan
+const path = require('path'); //importamos path
+const { sequelize } = require('./database/database'); //importamos la conexion a la base de datos
+const rutas = require('./routes/rutas'); //importamos las rutas
+const cors = require('cors'); //importamos cors
+const bodyParser = require('body-parser'); //importamos body-parser
+
+
+las cors son intercambios de recursos de origenes cruzados
+es una tecnica de seguridad que se utiliza para evitar que los scripts maliciosos se ejecuten en sitios web
+de confianza
+
