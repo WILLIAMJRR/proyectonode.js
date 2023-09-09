@@ -1,13 +1,30 @@
-const express = require('express');
+//!1
 
-const routerUsers = require('./routes/users.routes') 
-const routerRepair = require('./routes/repairs.routes')
+const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors')
+
 
 const app = express();
 
-app.use(express.json());
+const productRouter = require('./routes/products.routes')
 
-app.use("/api/v1/users", routerUsers);
-app.use("/api/v1/repairs", routerRepair);
+//para utilizar un midleware este hace es permitir o decirle a la app que pueda entender los objetos json que llegan desde un cliente todo lo quue venga co use es midleware
+
+//middleware ya creado de express
+app.use(express.json());
+//middleware de terceros
+app.use(morgan('dev'));
+app.use(cors())
+
+//middleware
+// app.use((req, res, next) => {
+//agregamos a findAllProducts
+//   req.requestTime = new Date();
+//   next();
+// });
+
+//rutas de productos se concatenan la ruta con el pach del productRouter
+app.use('/api/v1/products',productRouter);
 
 module.exports = app;
